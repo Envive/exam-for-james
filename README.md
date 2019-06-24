@@ -14,3 +14,7 @@
 ## 繳交的方發 PR
 - Question 1 和 Question 2 發在不同的 branch
 - 太大塊的 feature，可以切多個 commit
+
+## 備註
+- 可以使用任何的 framework 和 library
+- 注意 coding style
