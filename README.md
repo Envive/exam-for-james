@@ -11,7 +11,7 @@
 - 爬取常见疾病分科查询下有三個階層 内科疾病 > 呼吸内科疾病 > (感冒、结核病 ...) 的關係存成 json
 - 抓取每個疾病的 detail 頁面資料 Ex: http://www.a-hospital.com/w/%E6%84%9F%E5%86%92
 
-## 繳交的方發 PR
+## 繳交方法：PR
 - Question 1 和 Question 2 發在不同的 branch
 - 太大塊的 feature，可以切多個 commit
 
