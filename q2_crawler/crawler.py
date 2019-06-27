@@ -78,9 +78,14 @@ def get_disease_detail(url):
 
     response = requests.get(url)
     response.encoding = 'utf-8'
-    soup = BeautifulSoup(response.text, 'lxml')
 
-    # TODO
+    html = response.text
+    html = html.split('<div id="fromlink">')[0]
+    html = html.split('<!-- firstHeading -->')[1]
+
+    soup = BeautifulSoup(html, 'lxml')
+    [s.extract() for s in soup('script')]
+    soup.find('div', {'id': 'jump-to-nav'}).decompose()
 
     return soup.get_text()
 
