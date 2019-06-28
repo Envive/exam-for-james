@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_disease_by_specialty(url, specialty):
+    """Get the disease structure of the specialty.
+    """
 
     response = requests.get(url)
     response.encoding = 'utf-8'
@@ -45,6 +47,8 @@ def get_disease_by_specialty(url, specialty):
     return result
 
 def get_disease_url_by_specialty(url, specialty):
+        """Get disease links of the specialty.
+        """
 
     response = requests.get(url)
     response.encoding = 'utf-8'
@@ -75,6 +79,8 @@ def get_disease_url_by_specialty(url, specialty):
     return result
 
 def get_disease_detail(url):
+    """Get disease detail from the disease page.
+    """
 
     response = requests.get(url)
     response.encoding = 'utf-8'
@@ -136,12 +142,13 @@ if __name__== "__main__":
         try:
             os.makedirs(dir)
         except Error as e:
-            raise
+            print('Can not create folder: {}. Error: {}'.format(dir, e))
+            exit()
 
     urls = get_disease_url_by_specialty(url, '内科疾病')
     for name, url in urls['内科疾病'].items():
 
-        url = 'http://www.a-hospital.com' + url
+        url = 'http://www.a-hospital.com{}'.format(url)
 
         detail = get_disease_detail(url)
 
