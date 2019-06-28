@@ -47,8 +47,8 @@ def get_disease_by_specialty(url, specialty):
     return result
 
 def get_disease_url_by_specialty(url, specialty):
-        """Get disease links of the specialty.
-        """
+    """Get disease links of the specialty.
+    """
 
     response = requests.get(url)
     response.encoding = 'utf-8'
@@ -152,5 +152,5 @@ if __name__== "__main__":
 
         detail = get_disease_detail(url)
 
-        with open(dir + name + '.txt', 'w', encoding = 'utf8') as file:
+        with open('{}{}.txt'.format(dir, name), 'w', encoding = 'utf8') as file:
             file.write(detail)
