@@ -80,25 +80,28 @@ def get_disease_detail(url):
     response.encoding = 'utf-8'
 
     html = response.text
+
+    # remove redundant info
     html = html.split('<!-- firstHeading -->')[1]
     html = html.split('<div id="fromlink">')[0]
     html = html.split('<span class="mw-headline" id=".E5.8F.82.E7.9C.8B">参看</span>')[0]
+    html = html.split('<span class="mw-headline" id=".E5.8F.82.E8.80.83">参考</span>')[0]
 
     soup = BeautifulSoup(html, 'lxml')
     [s.extract() for s in soup('script')]
     soup.find('div', {'id': 'jump-to-nav'}).decompose()
 
-    # table of contents
+    # remove table of contents
     toc = soup.find('table', {'id': 'toc'})
     if toc:
         toc.decompose()
 
-    # navigation bar at the top
+    # remove navigation bar at the top
     nav = soup.find_all('table', {'class': 'nav'})
     for n in nav:
         n.decompose()
 
-    # navigation box at the bottom
+    # remove navigation box at the bottom
     navbox = soup.find_all('table', {'class': 'navbox'})
     for n in navbox:
         n.decompose()
